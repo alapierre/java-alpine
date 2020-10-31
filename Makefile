@@ -1,5 +1,5 @@
 IMAGE_NAME=lapierre/java-alpine
-IMAGE_VERSION=14.0.2_p12-r0-edge
+IMAGE_VERSION=14.0.2_p12-r0-a3.12.1
 
 build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
