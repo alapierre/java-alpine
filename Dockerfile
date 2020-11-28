@@ -5,6 +5,7 @@ MAINTAINER Adrian Lapierre <al@alapierre.io>
 ENV JAVA_VERSION 8.252.09-r0
 
 RUN apk add --no-cache java-cacerts \
+    && apk add --upgrade musl musl-utils \
     && apk --update add fontconfig ttf-dejavu \
     && apk add openjdk8=$JAVA_VERSION
 
