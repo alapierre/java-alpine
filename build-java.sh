@@ -17,10 +17,10 @@ git clone "$GIT_BASE_URL/java-apline.git" java-apline || { echo -e "${RED}ERROR$
 cd java-apline || { echo -e "${RED}ERROR${NC} Can't cd into project dir $tmp_dir/java-apline !"; exit 1; }
 make build push
 
-git checkout origin/jdk14 -b jdk14
+git checkout origin/jdk14 -b jdk14 || { echo -e "${RED}ERROR${NC} Can't checkout"; exit 1; }
 make build push
 
-git checkout origin/jdk15 -b jdk15
+git checkout origin/jdk15 -b jdk15 || { echo -e "${RED}ERROR${NC} Can't checkout"; exit 1; }
 make build push
 
 cd ..
