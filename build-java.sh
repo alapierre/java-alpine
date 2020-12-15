@@ -24,4 +24,9 @@ git checkout origin/jdk15 -b jdk15 || { echo -e "${RED}ERROR${NC} Can't checkout
 make build push
 
 cd ..
+git clone "$GIT_BASE_URL/flyway-docker.git" flyway-docker || { echo -e "${RED}ERROR${NC} Can't clone $GIT_BASE_URL/flyway-docker.git"; exit 1; }
+cd flyway-docker || { echo -e "${RED}ERROR${NC} Can't cd into project dir $tmp_dir/flyway-docker !"; exit 1; }
+make build push
+
+cd ..
 rm $tmp_dir || { echo -e "${RED}ERROR${NC} Can't rm $tmp_dir"; exit 1; }
