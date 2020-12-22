@@ -27,9 +27,6 @@ max_memory() {
 
 [ "$#" -eq 0 ] && { echo "$0: no jar file name provided"; exit 1; }
 
-fileSize=$(stat --format=%s $1)
-jarSizeInMB=$(($fileSize / 1024 / 1024))
-
 if [ -n "${CONTAINER_MAX_MEMORY}" ]; then
   echo "CONTAINER_MAX_MEMORY is set to $CONTAINER_MAX_MEMORY"
   totalMemory=$CONTAINER_MAX_MEMORY
@@ -43,6 +40,9 @@ else
     echo "can't count CGroups memory limit, using default max memory value 1024M"
   fi
 fi
+
+fileSize=$(stat -c %s $1)
+jarSizeInMB=$(($fileSize / 1024 / 1024))
 
 CC=$((400*$jarSizeInMB))
 threads=$((15+$jarSizeInMB*6/10))
