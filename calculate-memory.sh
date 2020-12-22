@@ -34,7 +34,7 @@ else
   mem_limit="$(max_memory)"
   echo "calculated max memory: ${mem_limit}"
   if [ -n "${mem_limit}" ]; then
-    totalMemory="${mem_limit}M"
+    totalMemory="${mem_limit}"
   else
     totalMemory=1024M
     echo "can't count CGroups memory limit, using default max memory value 1024M"
