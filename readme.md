@@ -15,17 +15,6 @@ Environment variables used by `run-java.sh`:
 
 ```make build```
 
-## Java Build Pack memory calculator licence
-
-The Java Buildpack Memory Calculator is Open Source software released under the Apache 2.0 license.
-
-## OpenJdk licence
-
-This project is licenced on Apache 2.0 but OpenJDK licence is
-GNU General Public License, version 2, with the Classpath Exception
-
-https://openjdk.java.net/legal/gplv2+ce.html
-
 ## Trivi scan
 
 ```
@@ -38,3 +27,18 @@ lapierre/java-alpine:8 (alpine 3.12.1)
 Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 
 ```
+
+## Java Build Pack memory calculator licence
+
+The Java Buildpack Memory Calculator is Open Source software created by CloudFoundry Foundation, released under the Apache 2.0 license.
+
+https://github.com/cloudfoundry/java-buildpack-memory-calculator
+
+## OpenJdk licence
+
+This project is licenced on Apache 2.0 but OpenJDK licence is
+GNU General Public License, version 2, with the Classpath Exception
+
+https://openjdk.java.net/legal/gplv2+ce.html
+
+
