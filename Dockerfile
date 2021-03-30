@@ -1,4 +1,4 @@
-FROM lapierre/alpine:3.12.2
+FROM lapierre/alpine:3
 
 MAINTAINER Adrian Lapierre <al@alapierre.io>
 

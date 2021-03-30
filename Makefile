@@ -1,8 +1,8 @@
 IMAGE_NAME=lapierre/java-alpine
-IMAGE_VERSION=8.252.09-r0-a3.12.2
+IMAGE_VERSION=8.282.08-r0-a3.12.3
 
 build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+	docker build --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
 	docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):latest
 	docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):8
 
