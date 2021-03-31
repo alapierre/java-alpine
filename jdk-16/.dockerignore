@@ -1,6 +1,2 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-build-all-java-images.sh
-*.iml
 Makefile
-readme.md
