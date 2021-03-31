@@ -4,9 +4,21 @@
 
 Multi arch Docker image, with useful entrypoint script `run-java.sh` to calculate Java memory options in container environment 
 
-````
+Sample Dockerfile
+
+```dockerfile
+FROM lapierre/java-alpine:8
+
+EXPOSE 8080
+ARG JAR_FILE
+ADD ${JAR_FILE} app.jar
+
+RUN addgroup -g 10001 -S app && adduser -u 10001 -S -G app app
+
+USER app
+
 ENTRYPOINT ["/run-java.sh",  "/app.jar"]
-````
+```
 
 Environment variables used by `run-java.sh`:
 
