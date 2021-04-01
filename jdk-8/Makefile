@@ -1,5 +1,5 @@
-IMAGE_NAME=lapierre/java-alpine
-IMAGE_VERSION=8.282.08-r0-a3.12.3
+include ../.env
+IMAGE_VERSION=$(JAVA_8_VERSION)-a$(ALPINE_VERSION)
 
 build:
 	docker build --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
@@ -10,5 +10,9 @@ push:
 	docker push $(IMAGE_NAME):latest
 
 multiarch:
-	docker buildx build --push --pull --platform=linux/arm/v7,linux/arm64/v8,linux/amd64 -t $(IMAGE_NAME):8 .
+	docker buildx build --build-arg JAVA_VERSION=$(JAVA_8_VERSION) --push --pull --platform=linux/arm/v7,linux/arm64/v8,linux/amd64 -t $(IMAGE_NAME):8 .
 	docker pull $(IMAGE_NAME):8
+	docker tag $(IMAGE_NAME):8 $(IMAGE_NAME):latest
+	docker push $(IMAGE_NAME):latest
+	docker tag $(IMAGE_NAME):8 $(IMAGE_NAME):$(IMAGE_VERSION)
+	docker push $(IMAGE_NAME):$(IMAGE_VERSION)

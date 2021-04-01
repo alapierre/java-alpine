@@ -2,7 +2,10 @@
 
 ### JDK 8
 
-Multi arch Docker image, with useful entrypoint script `run-java.sh` to calculate Java memory options in container environment 
+`amd64` `arm/v7` (interpreter mode IceTee Java implementation) and `arm64`
+
+Multi arch Docker image, with useful entrypoint script `run-java.sh` and memory calculator to calculate Java memory 
+options in container environment 
 
 Sample Dockerfile
 
@@ -27,17 +30,19 @@ Environment variables used by `run-java.sh`:
 
 ### JDK 11
 
+Only `amd64` and `arm64`
+
 ### JDK 14
 
+Only `amd64` and `arm64`
+
 ### JDK 15
+
+Only `amd64` and `arm64`
 
 ### JDK 16 (AdoptOpenJDK)
 
 Only `amd64`
-
-## How to build
-
-```make build```
 
 ## Trivi scan
 
