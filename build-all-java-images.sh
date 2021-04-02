@@ -12,7 +12,7 @@ declare NC='\033[0m' # No Color
 (cd jdk-8 && make multiarch)
 (cd jdk-14 && make multiarch)
 (cd jdk-15 && make multiarch)
-(cd jdk-16 && make multiarch)
+#(cd jdk-16 && make build push)
 
 
 trivy "$IMAGE_NAME":8
