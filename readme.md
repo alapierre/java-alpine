@@ -4,7 +4,7 @@
 
 `amd64` `arm/v7` (interpreter mode IceTee Java implementation) and `arm64`
 
-Multi arch Docker image, with useful entrypoint script `run-java.sh` and memory calculator to calculate Java memory 
+Multi arch Docker image, with useful entrypoint script `run-java.sh`, `wait-for.sh` and memory calculator to calculate Java memory 
 options in container environment 
 
 Sample Dockerfile
@@ -62,6 +62,10 @@ Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 The Java Buildpack Memory Calculator is Open Source software created by CloudFoundry Foundation, released under the Apache 2.0 license.
 
 https://github.com/cloudfoundry/java-buildpack-memory-calculator
+
+## `wait-for.sh` licence
+
+MIT Licensed originally from: https://github.com/mrako/wait-for
 
 ## OpenJdk licence
 
