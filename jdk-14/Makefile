@@ -1,6 +1,6 @@
 include ../.env
 
-IMAGE_VERSION=14.0.2_p12-r1-a$(ALPINE_VERSION)
+IMAGE_VERSION=$(JAVA_14_VERSION)-a$(ALPINE_VERSION)
 
 build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
