@@ -4,7 +4,7 @@ IMAGE_NAME=lapierre/java-alpine
 IMAGE_VERSION=$(JAVA_16_VERSION)-a$(ALPINE_VERSION)
 
 build:
-	docker build --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+	docker build --no-cache --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
 	#docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):16
 
 push:

@@ -17,4 +17,4 @@ else
   echo "running java with JAVA_OPTS as:" exec java "$JAVA_OPTS" -Djava.security.egd=file:/dev/./urandom -jar "$@"
   exec java "$JAVA_OPTS" -Djava.security.egd=file:/dev/./urandom -jar "$@"
 fi
-fi
+
