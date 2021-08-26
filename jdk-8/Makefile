@@ -2,7 +2,7 @@ include ../.env
 IMAGE_VERSION=$(JAVA_8_VERSION)-a$(ALPINE_VERSION)
 
 build:
-	docker build --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+	docker build --pull --build-arg JAVA_VERSION=$(JAVA_8_VERSION) -t $(IMAGE_NAME):$(IMAGE_VERSION) .
 	docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):latest
 
 push:
