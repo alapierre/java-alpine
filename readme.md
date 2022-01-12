@@ -30,15 +30,15 @@ Environment variables used by `run-java.sh`:
 
 ### JDK 11
 
-Only `amd64` and `arm64`
+`amd64` and `arm64`
 
 ### JDK 14
 
-Only `amd64` and `arm64`
+`amd64` and `arm64`
 
 ### JDK 15
 
-Only `amd64` and `arm64`
+`amd64` and `arm64`
 
 ### JDK 16 (AdoptOpenJDK)
 
