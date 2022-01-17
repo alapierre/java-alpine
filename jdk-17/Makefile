@@ -1,7 +1,7 @@
 include ../.env
 
 IMAGE_NAME=lapierre/java-alpine
-IMAGE_VERSION=$(JAVA_17_VERSION)-a$(ALPINE_VERSION)
+IMAGE_VERSION=$(JAVA_17_VERSION)-a$(ALPINE_VERSION)$(IMAGE_POSTFIX)
 
 build:
 	docker build --no-cache --pull -t $(IMAGE_NAME):$(IMAGE_VERSION) .
