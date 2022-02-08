@@ -9,12 +9,12 @@ export $(grep -E -v '^#' .env | xargs)
 declare RED='\033[0;31m'
 declare NC='\033[0m' # No Color
 
-(cd jdk-8 && make multiarch)
-(cd jdk-11 && make multiarch)
-(cd jdk-14 && make multiarch)
-(cd jdk-15 && make multiarch)
-(cd jdk-16 && make multiarch)
-(cd jdk-17 && make multiarch)
+(cd jdk-8 && make build multiarch)
+(cd jdk-11 && make build multiarch)
+(cd jdk-14 && make build multiarch)
+(cd jdk-15 && make build multiarch)
+(cd jdk-16 && make build multiarch)
+(cd jdk-17 && make build multiarch)
 
 
 trivy image "$IMAGE_NAME":8

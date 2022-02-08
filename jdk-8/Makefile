@@ -4,6 +4,7 @@ IMAGE_VERSION=$(JAVA_8_VERSION)-a$(ALPINE_VERSION)$(IMAGE_POSTFIX)
 build:
 	docker build --pull --build-arg JAVA_VERSION=$(JAVA_8_VERSION) -t $(IMAGE_NAME):$(IMAGE_VERSION) .
 	docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):latest
+	docker tag $(IMAGE_NAME):$(IMAGE_VERSION) $(IMAGE_NAME):8
 
 push:
 	docker push $(IMAGE_NAME):$(IMAGE_VERSION)
