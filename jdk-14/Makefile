@@ -11,7 +11,12 @@ push:
 	docker push $(IMAGE_NAME):14
 
 multiarch:
-	docker buildx build --push --pull --platform=linux/arm64/v8,linux/amd64 -t $(IMAGE_NAME):14 .
+	docker buildx build --push --pull --platform=$(DOCKER_PLATFORMS) -t $(IMAGE_NAME):14 .
 	docker pull $(IMAGE_NAME):14
 	docker tag $(IMAGE_NAME):14 $(IMAGE_NAME):$(IMAGE_VERSION)
 	docker push $(IMAGE_NAME):$(IMAGE_VERSION)
+
+github:
+	docker buildx build --platform $(DOCKER_PLATFORMS) \
+ 		--tag "$(IMAGE_NAME):14" --tag "$(IMAGE_NAME):$(IMAGE_VERSION)" \
+ 		--output "type=image,push=true" .

@@ -16,3 +16,8 @@ multiarch:
 	docker pull $(IMAGE_NAME):17
 	docker tag $(IMAGE_NAME):17 $(IMAGE_NAME):$(IMAGE_VERSION)
 	docker push $(IMAGE_NAME):$(IMAGE_VERSION)
+
+github:
+	docker buildx build --platform $(DOCKER_PLATFORMS) \
+ 		--tag "$(IMAGE_NAME):17" --tag "$(IMAGE_NAME):$(IMAGE_VERSION)" \
+ 		--output "type=image,push=true" .
