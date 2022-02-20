@@ -18,6 +18,6 @@ multiarch:
 	docker push $(IMAGE_NAME):$(IMAGE_VERSION)
 
 github:
-	docker buildx build --platform $(DOCKER_PLATFORMS) \
+	docker buildx build --platform linux/arm64/v8,linux/amd64 \
  		--tag "$(IMAGE_NAME):17" --tag "$(IMAGE_NAME):$(IMAGE_VERSION)" \
  		--output "type=image,push=true" .

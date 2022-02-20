@@ -19,6 +19,6 @@ multiarch:
 	docker push $(IMAGE_NAME):$(IMAGE_VERSION)
 
 github:
-	docker buildx build --build-arg JAVA_VERSION=$(JAVA_8_VERSION) --platform $(DOCKER_PLATFORMS) \
+	docker buildx build --build-arg JAVA_VERSION=$(JAVA_8_VERSION) --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
  		--tag "$(IMAGE_NAME):8" --tag "$(IMAGE_NAME):$(IMAGE_VERSION)" \
  		--output "type=image,push=true" .
