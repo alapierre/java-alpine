@@ -1,5 +1,5 @@
 ## Java base on security patched official alpine image with varius Open JDK installed on it and no security vulnerabilities 
-
+ 
 ### JDK 8
 
 `amd64` `arm/v7` (interpreter mode IceTee Java implementation) and `arm64`
