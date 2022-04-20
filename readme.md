@@ -47,13 +47,15 @@ Only `amd64`
 ## Trivi scan
 
 ```
-trivy lapierre/java-alpine:16
-2021-03-31T21:06:52.339+0200	INFO	Detecting Alpine vulnerabilities...
-2021-03-31T21:06:52.339+0200	INFO	Trivy skips scanning programming language libraries because no supported file was detected
+trivy image lapierre/alpine:3
+2022-04-20T14:18:35.301+0200	INFO	Detected OS: alpine
+2022-04-20T14:18:35.301+0200	INFO	Detecting Alpine vulnerabilities...
+2022-04-20T14:18:35.302+0200	INFO	Number of language-specific files: 0
 
-lapierre/java-alpine:16 (alpine 3.13.3)
-=======================================
+lapierre/alpine:3 (alpine 3.15.4)
+=================================
 Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
 
 ```
 
