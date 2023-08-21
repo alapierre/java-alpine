@@ -27,15 +27,6 @@ jobs:
       - name: Run Buildx JDK 11
         run: |
           (cd jdk-11 && make build github)
-      - name: Run Buildx JDK 14
-        run: |
-          (cd jdk-14 && make build github)
-      - name: Run Buildx JDK 15
-        run: |
-          (cd jdk-15 && make build github)
-      - name: Run Buildx JDK 16
-        run: |
-          (cd jdk-16 && make build github)
       - name: Run Buildx JDK 17
         run: |
           (cd jdk-17 && make build github)
