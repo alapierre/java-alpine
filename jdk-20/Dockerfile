@@ -4,7 +4,7 @@ MAINTAINER Adrian Lapierre <al@alapierre.io>
 
 RUN apk add --no-cache java-cacerts fontconfig ttf-dejavu \
     && apk --no-cache add libx11 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    && apk --no-cache add openjdk20 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+    && apk --no-cache add openjdk20 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 
 COPY ssl ./
 
