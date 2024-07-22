@@ -21,9 +21,6 @@ jobs:
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Run Buildx JDK 8
-        run: |
-          (cd jdk-8 && make build github)
       - name: Run Buildx JDK 11
         run: |
           (cd jdk-11 && make build github)
