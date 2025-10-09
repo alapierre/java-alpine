@@ -46,6 +46,7 @@ Only `amd64`
 
 ## Trivi scan
 
+
 ```
 trivy image lapierre/alpine:3
 2022-04-20T14:18:35.301+0200	INFO	Detected OS: alpine
