@@ -30,3 +30,6 @@ jobs:
       - name: Run Buildx JDK 21
         run: |
           (cd jdk-21 && make build github)
+      - name: Run Buildx JDK 25
+        run: |
+          (cd jdk-25 && make build github)
