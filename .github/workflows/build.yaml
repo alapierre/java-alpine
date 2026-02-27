@@ -46,21 +46,33 @@ jobs:
           docker pull --platform=linux/amd64 lapierre/java-alpine:21
 
       - name: Generate SBOM (CycloneDX JSON)
-        uses: anchore/sbom-action@v0
+        uses: anchore/sbom-action@v0.23.0
         with:
           image: lapierre/java-alpine:21
           format: cyclonedx-json
           output-file: sbom-java-alpine-21.cdx.json
 
       - name: Upload SBOM to Dependency-Track
-        uses: DependencyTrack/gh-upload-sbom@v3
-        with:
-          serverhostname: dtrack.itrust.dev
-          protocol: https
-          port: 443
-          apikey: ${{ secrets.DT_API_KEY }}
-          projectname: java-alpine:21
-          projectversion: ${{ github.ref_name }}-${{ github.run_number }}
-          autocreate: true
-          bomfilename: sbom-java-alpine-21.cdx.json
-          parent: 485c7fac-f4ac-4c5b-a692-9ba97bfc9d47
+        env:
+          DTRACK_URL: https://dtrack.itrust.dev
+          DTRACK_API_KEY: ${{ secrets.DT_API_KEY }}
+          DTRACK_PROJECT_NAME: "java-alpine"
+          DTRACK_VERSION: ${{ github.sha }}
+          DTRACK_IS_LATEST: "true"
+          DTRACK_PARENT_UUID: "485c7fac-f4ac-4c5b-a692-9ba97bfc9d47"
+          DTRACK_AUTO_CREATE: "true"
+          DTRACK_BOM_PATH: "sbom-java-alpine-21.cdx.json"
+          DTRACK_TIMEOUT_SECONDS: "60"
+        run: |
+          set -euo pipefail          
+          curl --fail --show-error --silent \
+            --max-time "$DTRACK_TIMEOUT_SECONDS" \
+            -X POST "$DTRACK_URL/api/v1/bom" \
+            -H "accept: application/json" \
+            -H "X-Api-Key: $DTRACK_API_KEY" \
+            -F "isLatest=$DTRACK_IS_LATEST" \
+            -F "projectName=$DTRACK_PROJECT_NAME" \
+            -F "projectVersion=$DTRACK_VERSION" \
+            -F "autoCreate=$DTRACK_AUTO_CREATE" \
+            -F "parentUUID=$DTRACK_PARENT_UUID" \
+            -F "bom=@$DTRACK_BOM_PATH;type=application/json"
