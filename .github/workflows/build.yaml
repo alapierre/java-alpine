@@ -1,36 +1,66 @@
 name: Build
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
+
 jobs:
   buildx:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        jdk: ["11", "17", "21", "25"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Login to DockerHub
-        if: success() && github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Run Buildx JDK 11
+
+      - name: Build & Push image (from jdk-${{ matrix.jdk }})
         run: |
-          (cd jdk-11 && make build github)
-      - name: Run Buildx JDK 17
+          (cd jdk-${{ matrix.jdk }} && make build github)
+
+  sbom_to_dt:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    needs: buildx
+
+    steps:
+      - name: Pull image (linux/amd64) for SBOM
         run: |
-          (cd jdk-17 && make build github)
-      - name: Run Buildx JDK 21
-        run: |
-          (cd jdk-21 && make build github)
-      - name: Run Buildx JDK 25
-        run: |
-          (cd jdk-25 && make build github)
+          docker pull --platform=linux/amd64 lapierre/java-alpine:21
+
+      - name: Generate SBOM (CycloneDX JSON)
+        uses: anchore/sbom-action@v0
+        with:
+          image: lapierre/java-alpine:21
+          format: cyclonedx-json
+          output-file: sbom-java-alpine-21.cdx.json
+
+      - name: Upload SBOM to Dependency-Track
+        uses: DependencyTrack/gh-upload-sbom@v3
+        with:
+          serverhostname: dtrack.itrust.dev
+          protocol: https
+          port: 443
+          apikey: ${{ secrets.DT_API_KEY }}
+          projectname: java-alpine:21
+          projectversion: ${{ github.ref_name }}-${{ github.run_number }}
+          autocreate: true
+          bomfilename: sbom-java-alpine-21.cdx.json
+          parent: 485c7fac-f4ac-4c5b-a692-9ba97bfc9d47
