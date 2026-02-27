@@ -56,7 +56,7 @@ jobs:
         env:
           DTRACK_URL: https://dtrack.itrust.dev
           DTRACK_API_KEY: ${{ secrets.DT_API_KEY }}
-          DTRACK_PROJECT_NAME: "java-alpine"
+          DTRACK_PROJECT_NAME: "java-alpine:21"
           DTRACK_VERSION: ${{ github.sha }}
           DTRACK_IS_LATEST: "true"
           DTRACK_PARENT_UUID: "485c7fac-f4ac-4c5b-a692-9ba97bfc9d47"
