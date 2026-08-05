@@ -4,7 +4,7 @@ LABEL maintainer="Adrian Lapierre <al@alapierre.io>"
 
 RUN apk upgrade --no-cache && apk add --no-cache java-cacerts fontconfig ttf-dejavu \
     && apk --no-cache add libx11 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
-    && apk --no-cache add openjdk21 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    && apk --no-cache add openjdk21-jdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 
 COPY ssl ./
 
