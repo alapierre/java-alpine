@@ -7,7 +7,7 @@
 Multi arch Docker image, with useful entrypoint script `run-java.sh`, `wait-for.sh` and memory calculator to calculate Java memory 
 options in container environment 
 
-Sample Dockerfile
+Sample Dockerfile 
 
 ```dockerfile
 FROM lapierre/java-alpine:8
