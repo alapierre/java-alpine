@@ -2,7 +2,7 @@ FROM lapierre/alpine:3
 
 LABEL maitaner="Adrian Lapierre <al@alapierre.io>"
 
-RUN apk add --no-cache java-cacerts fontconfig ttf-dejavu \
+RUN apk upgrade --no-cache && apk add --no-cache java-cacerts fontconfig ttf-dejavu \
     && apk --no-cache add libx11 --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     && apk --no-cache add openjdk25-jdk --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 
